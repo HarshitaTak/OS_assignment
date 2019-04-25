@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<stdbool.h>
+#include<windows.h>
+int P = 5; 
+int R = 3; 
+
+void calculateNeed(int need[P][R], int Max[P][R], int allot[P][R]);
+
+bool Check(int process[], int avail[], int Max[][R], int allot[][R]); 
+
+int main() 
+{ 
+	int process[] = {0, 1, 2, 3, 4}; 
+
+	int allot[][3] = {{0, 1, 0}, 
+					{2, 0, 0}, 
+					{3, 0, 2}, 
+					{2, 1, 1}, 
+					{0, 0, 2}}; 
+
+	int Max[][3] = {{7, 5, 3}, 
+					{3, 2, 2}, 
+					{9, 0, 2}, 
+					{2, 2, 2}, 
+					{4, 3, 3}}; 
+
+	int avail[] = {3, 3, 2}; 
+
+	Check(process, avail, Max, allot); 
+
+	return 0; 
+} 
+
+void calculateNeed(int need[P][R], int Max[P][R], int allot[P][R]) 
+{ 
+	for (int i = 0 ; i < P ; i++) 
+		for (int j = 0 ; j < R ; j++) 
+			need[i][j] = Max[i][j] - allot[i][j]; 
+} 
