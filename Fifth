@@ -1,0 +1,53 @@
+
+bool Check(int process[], int avail[], int Max[][R], int allot[][R]) 
+{ 
+	int need[P][R]; 
+	calculateNeed(need, Max, allot); 
+
+	bool done[5] = {0}; 
+	int sequence[P]; 
+	int work[R]; 
+	for (int i = 0; i < R ; i++) 
+		work[i] = avail[i]; 
+	int count = 0; 
+	while (count < P) 
+	{ 
+		bool temp = false; 
+		for (int p = 0; p < P; p++) 
+		{ 
+			if (done[p] == 0) 
+			{ 
+				int j; 
+				for (j = 0; j < R; j++) 
+					if (need[p][j] > work[j]) 
+						break; 
+
+				if (j == R) 
+				{ 
+					for (int k = 0 ; k < R ; k++) 
+						work[k] += allot[p][k]; 
+					sequence[count++] = p; 
+					done[p] = 1; 
+
+					temp = true; 
+				} 
+			} 
+		} 
+		if (temp == false) 
+		{ 	
+			printf("\n\t\t\tComputing....")
+			printf( "\n\t\tSystem is not in safe state, Deadlock may occur"); 
+			return false; 
+		} 
+	} 
+	printf("\n\t\t\tComputing....")
+	sleep(1);
+	printf ("\n\t\tThe given Resource allocation is in safe state");
+	printf("\n\t\tThe safe sequence is : ");
+	for (int i = 0; i < P ; i++) 
+	{
+		sleep(1);
+		printf("%d ",sequence[i]); 
+	}
+	return true; 
+} 
