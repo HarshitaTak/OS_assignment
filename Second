@@ -1,0 +1,25 @@
+	while (flag < pro_num) 
+	{ 
+		bool found = false; 
+		for (p = 0; p < pro_num; p++) 
+		{ 
+			if (finish[p] == 0) 
+			{ 
+				
+				for (j = 0; j < res_num; j++) 
+					if (need[p][j] > temp[j]) 
+						break; 
+
+				if (j == res_num) 
+				{ 
+					for ( k = 0 ; k < res_num ; k++) 
+						temp[k] += alloted[p][k]; 
+
+					safe_seq[flag++] = p; 
+					finish[p] = 1; 
+
+					found = true; 
+				} 
+			} 
+		} 
+
