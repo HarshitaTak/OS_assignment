@@ -1,0 +1,37 @@
+		if (found == false) 
+		{ 
+			printf( "System is not in safe state"); 
+			return false; 
+		} 
+	} 
+
+	printf("System is in safe state.\nSafe");
+	printf(	" sequence is: "); 
+	for ( i = 0; i < pro_num ; i++) 
+		printf("%d ",safe_seq[i]); 
+
+	return true; 
+} 
+
+int main() 
+{ 
+	int process[] = {0, 1, 2, 3, 4}; 
+
+	int available[] = {3, 3, 2}; 
+
+	int maximum[][3] = {{7, 5, 3}, 
+					{3, 2, 2}, 
+					{9, 0, 2}, 
+					{2, 2, 2}, 
+					{4, 3, 3}}; 
+
+	int alloted[][3] = {{0, 1, 0}, 
+					{2, 0, 0}, 
+					{3, 0, 2}, 
+					{2, 1, 1}, 
+					{0, 0, 2}}; 
+
+	Safe(process, available, maximum, alloted); 
+
+	return 0; 
+} 
